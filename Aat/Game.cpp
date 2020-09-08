@@ -23,6 +23,7 @@ void Game::InitGameMode()
 	}
 	gameModes.push(new MainMenuGameMode())
 	*/
+
 }
 
 void Game::LoadFont()
