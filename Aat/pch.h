@@ -10,13 +10,13 @@
 #include <vector>
 #include <fstream>
 #include <iostream>
-#include <memory>//스마트 포인터 사용안할 예정
 #include <map>
 #include <utility>
 #include <stack>
 #include <optional>
 #include <array>
 #include <chrono>
+#include <any>
 
 #include <SFML/System.hpp>
 #include <SFML/Window.hpp>

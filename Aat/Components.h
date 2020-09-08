@@ -1,27 +1,58 @@
 #pragma once
+#include "Controllers.h"
 class Component
 {
 public:
-	unsigned int GameObjectID;
+	unsigned ID;
+protected:
+	Component(unsigned id);
 private:
+
+};
+
+class StateCompoment
+	:public Component
+{
+public:
+private:
+	unsigned GameObjectID;
+	std::string name;
 };
 
 class MovementComponent
-	:Component
+	:public Component
 {
 public:
+	MovementComponent(unsigned id,const Controller& controller);
+
 	void Update();
+private:
+	int x, y;
+	const Controller& controller;
 };
 
 class GraphicsComponent
-	:Component
+	:public Component
 {
 
 };
 
 class InputComponent
-	:Component
+	:public Component
 {
 
 };
 
+class ControllerComponent
+	:public Component
+{
+
+};
+
+class ImageComponent
+	:public Component
+{
+public:
+private:
+	sf::RectangleShape shape;
+};

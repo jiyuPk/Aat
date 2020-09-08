@@ -6,3 +6,6 @@ public:
 	virtual void Render(std::shared_ptr<sf::RenderWindow> window);
 };
 
+class HUD
+{
+};

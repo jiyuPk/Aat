@@ -6,23 +6,21 @@ void Game::MakeWindow()
 {
 	windowSetting.LoadWinSwtting("Config/WinSetting.ini");
 
-	window = std::make_shared<sf::RenderWindow>(windowSetting.Resolution, windowSetting.title, sf::Style::Titlebar | sf::Style::Close,windowSetting.ContextSettings);
+	window = new sf::RenderWindow(windowSetting.Resolution, windowSetting.title, sf::Style::Titlebar | sf::Style::Close,windowSetting.ContextSettings);
 	window->setFramerateLimit(windowSetting.FrameRateLimit);
 }
 
 void Game::InitGameMode()
 {
-	//gamemodes.push(std::make_shared<PlayGameMode>(window, eventHandler));
-	//gamemodes.push(std::make_shared<MainmenuGameMode>(window, eventHandler, &fonts["MainmenuFont"]));
 
-	/*
-	적용예정 코드
-	if (tutorialcleared)
-	{
-		gameModes.push(new TutorialGameMode())
-	}
-	gameModes.push(new MainMenuGameMode())
-	*/
+	
+	//적용예정 코드
+	//if (tutorialcleared)
+	//{
+	gameModes.push(new TutorialGameMode());
+	//}
+	//gameModes.push(new MainMenuGameMode())
+	
 
 }
 
@@ -34,7 +32,7 @@ void Game::LoadFont()
 void Game::UpdateMousePosition()
 {
 	mousePositionGlobal = sf::Mouse::getPosition();
-	mousePositionWindow = sf::Mouse::getPosition(*window.get());
+	mousePositionWindow = sf::Mouse::getPosition(*window);
 }
 
 void Game::UpdateDeltaTime()
@@ -47,7 +45,7 @@ void Game::UpdateQuit()
 	while (window->pollEvent(event))
 	{
 		if (event.type == sf::Event::Closed)
-			eventHandler->GameQuitEvent(window);
+			window->close();
 	}
 }
 
@@ -62,10 +60,13 @@ Game::Game()
 
 Game::~Game()
 {
+	delete window;
 }
 
 void Game::GameLoop()
 {
+	if (gameModes.empty())
+		throw ("GameModeStack is empty");
 	int lag = 0;
 
 	while(window->isOpen())
@@ -87,17 +88,13 @@ void Game::Update()
 	UpdateQuit();
 	UpdateMousePosition();
 
-	gamemodes.top()->Update(*this);
+	gameModes.top()->Update();
 }
 
 void Game::Render()
 {
 	window->clear();
-	gamemodes.top()->Render();
-	window->display();
-}
 
-sf::Vector2i Game::GetMousePositionWindow() const
-{
-	return mousePositionWindow;
+	gameModes.top()->Render();
+	window->display();
 }

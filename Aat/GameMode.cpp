@@ -1,8 +1,21 @@
 #include "pch.h"
 #include "GameMode.h"
 
-GameMode::GameMode(std::shared_ptr<sf::RenderWindow> window, std::shared_ptr<EventHandler> eventHandler)
+GameMode::GameMode()
 {
-	this->renderWindow = window;
-	this->eventHandler = eventHandler;
+}
+
+TutorialGameMode::TutorialGameMode()
+{
+	//graphicsComponent = new GraphicsComponent[10];
+
+}
+
+void TutorialGameMode::Update()
+{
+
+}
+
+void TutorialGameMode::Render()
+{
 }

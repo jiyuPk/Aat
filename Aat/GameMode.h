@@ -1,26 +1,28 @@
 #pragma once
-#include "Game.h"
-#include "InputHandler.h"
+#include "Controllers.h"
 #include "UI.h"
+#include "Components.h"
 
 class GameMode
 {
 protected:
-	std::shared_ptr<sf::RenderWindow> renderWindow;
-	sf::RectangleShape background;
-
-	std::shared_ptr<EventHandler> eventHandler;
+	PlayerController playerController;
+	std::vector<Controller> controllers;
 public:
-	GameMode(std::shared_ptr<sf::RenderWindow> window, std::shared_ptr<EventHandler> eventHandler);
-
 	GameMode();
 
-	virtual void Update(const Game& game_ref) = 0;
+	virtual void Update() = 0;
 	virtual void Render() = 0;
 };
 
 class TutorialGameMode
 	:public GameMode
 {
+public:
+	TutorialGameMode();
+	void Update() override;
+	void Render() override;
 
+private:
+	GraphicsComponent* graphicsComponent;
 };
