@@ -1,21 +1,37 @@
 #include "pch.h"
 #include "GameMode.h"
 
-GameMode::GameMode()
+//TutorialGameMode::TutorialGameMode()
+//{
+//	graphicsComponent = new GraphicsComponent[10];
+//
+//}
+//
+//void TutorialGameMode::Update()
+//{
+//
+//}
+//
+//void TutorialGameMode::Render()
+//{
+//}
+
+MainMenuGameMode::MainMenuGameMode(std::shared_ptr<sf::RenderWindow> window)
+	:GameMode(window), background(1,1, Aat::Coordinate())
+{
+
+}
+
+void MainMenuGameMode::Update()
 {
 }
 
-TutorialGameMode::TutorialGameMode()
+void MainMenuGameMode::Render()
 {
-	//graphicsComponent = new GraphicsComponent[10];
-
+	window->draw(background.GetSprite());
 }
 
-void TutorialGameMode::Update()
+GameMode::GameMode(std::shared_ptr<sf::RenderWindow> window)
 {
-
-}
-
-void TutorialGameMode::Render()
-{
+	this->window = window;
 }

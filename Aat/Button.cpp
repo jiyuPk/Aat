@@ -28,9 +28,10 @@ Button::Button(int x, int y, int width, int height, ButtonColor button_color, Bu
 	oldState = IDLE;
 }
 
-void Button::Update(const sf::Vector2i& mouse_position_window) //전 상태와 같을 시 색갈 업데이트 안함 구현 예정
+ std::unique_ptr<Aat::Event> Button::Update(const sf::Vector2i& mouse_position_window) //전 상태와 같을 시 색갈 업데이트 안함 구현 예정
 {
-	oldState = buttonState;
+	//oldState = buttonState;
+
 
 	if (shape.getGlobalBounds().contains(sf::Vector2f(mouse_position_window.x, mouse_position_window.y)))
 	{
@@ -51,7 +52,6 @@ void Button::Update(const sf::Vector2i& mouse_position_window) //전 상태와 같을 
 	//	std::cout << buttonState << "new" << std::endl;
 	}
 
-
 	//if (!oldState == buttonState)
 	//{
 		switch (buttonState)
@@ -59,19 +59,23 @@ void Button::Update(const sf::Vector2i& mouse_position_window) //전 상태와 같을 
 		case IDLE:
 			shape.setFillColor(idleColor);
 			text.setFillColor(textIdleColor);
+			//return std::make_unique<Aat::Event> buttonEvent("buttonidle");
 			break;
 
 		case HOVER:
 			shape.setFillColor(hoverColor);
 			text.setFillColor(textHoverColor);
+			//Aat::Event buttonEvent("buttonhover");
 			break;
 
 		case PRESSED:
 			shape.setFillColor(pressedColor);
 			text.setFillColor(textPressedColor);
+			//Aat::Event buttonEvent("buttonpressed");
 			break;
 		}
 	//}
+		return nullptr;
 }
 
 void Button::Render(std::shared_ptr<sf::RenderWindow> window)

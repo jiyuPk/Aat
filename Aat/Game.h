@@ -1,6 +1,7 @@
 #pragma once
-#include "WindowSetting.h"
+#include "EventQueue.h"
 #include "GameMode.h"
+#include "WindowSetting.h"
 
 class Game
 {
@@ -16,8 +17,8 @@ public:
 private:
 	std::stack<GameMode*> gameModes;
 
-	sf::RenderWindow* window; 
-	WindowSetting windowSetting;
+	std::shared_ptr<sf::RenderWindow> window;
+
 	sf::Event event;
 	std::map<std::string, sf::Font> fonts;
 
@@ -28,8 +29,9 @@ private:
 	int deltaTime;
 	sf::Clock deltaTimeClock;
 
+	bool isGameRunning;
 
-	void MakeWindow(); //파일시스템 공부후 개선예정
+	void InitWindow();
 	void InitGameMode();
 	void LoadFont(); // 이동 예정
 

@@ -4,16 +4,16 @@
 class WindowSetting
 {
 public:
-	WindowSetting();
+	WindowSetting(const std::string& path);
 
 	sf::VideoMode Resolution;
 	std::string title;
 	bool Fullscreen;
-	unsigned FrameRateLimit;
+	int FrameRateLimit;
 	sf::ContextSettings ContextSettings;
 
-	void SaveWinSetting(const std::string path);
-	void LoadWinSwtting(const std::string path);
+	void SaveWinSetting(const std::string& path);
+	void LoadWinSwtting(const std::string& path);
 };
 
 

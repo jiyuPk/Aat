@@ -1,28 +1,40 @@
 #pragma once
 #include "Controllers.h"
 #include "UI.h"
-#include "Components.h"
+#include "ComponentList.h"
 
 class GameMode
 {
 protected:
 	PlayerController playerController;
 	std::vector<Controller> controllers;
+	std::shared_ptr<sf::RenderWindow> window;
+	//ComponentList componentList;
 public:
-	GameMode();
+	GameMode(std::shared_ptr<sf::RenderWindow> window);
 
 	virtual void Update() = 0;
 	virtual void Render() = 0;
 };
 
-class TutorialGameMode
+class MainMenuGameMode
 	:public GameMode
 {
 public:
-	TutorialGameMode();
+	MainMenuGameMode(std::shared_ptr<sf::RenderWindow> window);
 	void Update() override;
 	void Render() override;
-
 private:
-	GraphicsComponent* graphicsComponent;
+	Aat::SpriteComponent background;
 };
+
+//class TutorialGameMode
+//	:public GameMode
+//{
+//public:
+//	TutorialGameMode();
+//	void Update() override;
+//	void Render() override;
+//
+//private:
+//};

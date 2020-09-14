@@ -2,12 +2,28 @@
 #include "Game.h"
 #include "GameMode.h"
 
-void Game::MakeWindow()
+std::unique_ptr<sf::RenderWindow> MakeWindow(const std::string& path)
 {
-	windowSetting.LoadWinSwtting("Config/WinSetting.ini");
+	WindowSetting winSetting(path);
+	if (winSetting.Fullscreen == true)
+	{
+		//std::unique_ptr<sf::RenderWindow> window = std::make_unique<sf::RenderWindow>(winSetting.Resolution, winSetting.title, sf::Style::Fullscreen, winSetting.ContextSettings);
+		//window->setFramerateLimit(winSetting.FrameRateLimit);
+		sf::VideoMode vm(1920, 1080);
+		std::unique_ptr<sf::RenderWindow> window = std::make_unique<sf::RenderWindow>(vm, "aat", sf::Style::Close);
+		return window;
+	}
+	else
+	{
+		//std::unique_ptr<sf::RenderWindow> window = std::make_unique<sf::RenderWindow>(winSetting.Resolution, winSetting.title, sf::Style::Titlebar | sf::Style::Close, winSetting.ContextSettings);
+		//window->setFramerateLimit(winSetting.FrameRateLimit);
+		//return window;
+	}
+}
 
-	window = new sf::RenderWindow(windowSetting.Resolution, windowSetting.title, sf::Style::Titlebar | sf::Style::Close,windowSetting.ContextSettings);
-	window->setFramerateLimit(windowSetting.FrameRateLimit);
+void Game::InitWindow()
+{
+	window = MakeWindow("Config/WinSetting.ini");
 }
 
 void Game::InitGameMode()
@@ -17,11 +33,12 @@ void Game::InitGameMode()
 	//적용예정 코드
 	//if (tutorialcleared)
 	//{
-	gameModes.push(new TutorialGameMode());
+	//Nofity(Event)
+	//gameModes.push(new TutorialGameMode());
 	//}
 	//gameModes.push(new MainMenuGameMode())
 	
-
+	gameModes.push(new MainMenuGameMode(window));
 }
 
 void Game::LoadFont()
@@ -51,7 +68,8 @@ void Game::UpdateQuit()
 
 Game::Game()
 {
-	MakeWindow();
+	//Nofity(event(Game Start))
+	InitWindow();
 	LoadFont();
 
 	InitGameMode();
@@ -60,7 +78,6 @@ Game::Game()
 
 Game::~Game()
 {
-	delete window;
 }
 
 void Game::GameLoop()
@@ -69,18 +86,25 @@ void Game::GameLoop()
 		throw ("GameModeStack is empty");
 	int lag = 0;
 
-	while(window->isOpen())
-	{
-		UpdateDeltaTime();
-		lag += deltaTime;
+	//isGameRunning = true;
 
-		while (lag > ms_per_update)
+	//while(isGameRunning)
+	//{
+		while (window->isOpen())
 		{
+		//	UpdateDeltaTime();
+		//	lag += deltaTime;
+
+			//while (lag > ms_per_update)
+		//	{
+		//		Update();
+		//		lag -= ms_per_update;
+		//	}
+		//	Render();
 			Update();
-			lag -= ms_per_update;
+			Render();
 		}
-		Render();
-	}
+	//}
 }
 
 void Game::Update()
@@ -94,6 +118,14 @@ void Game::Update()
 void Game::Render()
 {
 	window->clear();
+
+	sf::Texture texture;
+	texture.loadFromFile("Graphics/Background/background.png");
+	sf::Sprite sprite;
+	sprite.setTexture(texture);
+	sprite.setPosition(0, 0);
+
+	window->draw(sprite);
 
 	gameModes.top()->Render();
 	window->display();

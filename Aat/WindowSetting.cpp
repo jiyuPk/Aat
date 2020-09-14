@@ -1,20 +1,22 @@
 #include "pch.h"
 #include "WindowSetting.h"
 
-WindowSetting::WindowSetting()
+WindowSetting::WindowSetting(const std::string& path)
 {
 	Resolution = sf::VideoMode(1280, 720);
 	title = "Default Name";
-	Fullscreen = false;
-	FrameRateLimit = 300;
+	Fullscreen = true;
+	FrameRateLimit = 301;
 	ContextSettings.antialiasingLevel = 0;
+	LoadWinSwtting(path);
 }
 
-void WindowSetting::SaveWinSetting(const std::string path)
+void WindowSetting::SaveWinSetting(const std::string& path)
 {
+
 }
 
-void WindowSetting::LoadWinSwtting(const std::string path)
+void WindowSetting::LoadWinSwtting(const std::string& path) 
 {
 	char ResolutionName;
 	std::ifstream ifs(path);

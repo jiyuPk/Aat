@@ -17,6 +17,8 @@
 #include <array>
 #include <chrono>
 #include <any>
+#include <memory>
+#include <queue>
 
 #include <SFML/System.hpp>
 #include <SFML/Window.hpp>

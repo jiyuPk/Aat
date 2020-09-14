@@ -1,4 +1,5 @@
 #pragma once
+#include "Events.h"
 
 struct ButtonColor
 {
@@ -19,7 +20,7 @@ class Button
 public:
 	Button(int x, int y, int width, int height, ButtonColor button_color, ButtonColor text_color,sf::Font* font, std::wstring text, unsigned font_size);
 
-	void Update(const sf::Vector2i& mouse_position_window);
+	std::unique_ptr<Aat::Event> Update(const sf::Vector2i& mouse_position_window);
 	void Render(std::shared_ptr<sf::RenderWindow> window);
 
 	bool IsButtonPressed() const;
