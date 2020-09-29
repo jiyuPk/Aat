@@ -1,19 +1,19 @@
 #pragma once
-
-
-class WindowSetting
+namespace Aat
 {
-public:
-	WindowSetting(const std::string& path);
+	class WindowSetting
+	{
+	public: 
+		WindowSetting();
 
-	sf::VideoMode Resolution;
-	std::string title;
-	bool Fullscreen;
-	int FrameRateLimit;
-	sf::ContextSettings ContextSettings;
+		sf::VideoMode videoMode;
+		bool fullScreen;
+		std::string title;
+		int style : 5;
+		sf::ContextSettings contextSetting;
+		size_t frameRateLimit;
 
-	void SaveWinSetting(const std::string& path);
-	void LoadWinSwtting(const std::string& path);
-};
-
+		void LoadFromFile(std::filesystem::path path);
+	};
+}
 

@@ -9,157 +9,141 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="GameMode">
-      <UniqueIdentifier>{07b81fdc-a1a9-4563-be52-cc83fe56a223}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="UI">
-      <UniqueIdentifier>{1c224bcf-591f-47e8-b1f5-a66b72aac6a2}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Event">
-      <UniqueIdentifier>{14144006-4788-4e57-a71e-4d9f46aef21e}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="GameState">
-      <UniqueIdentifier>{393ed951-6e46-45e2-8b09-ed5b9febef7b}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Camera">
-      <UniqueIdentifier>{94b1de7c-a75f-4b28-b11d-f180cbb6675f}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="World">
-      <UniqueIdentifier>{4dfcd6d5-05d4-48e0-a012-82caa37e272d}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Components">
-      <UniqueIdentifier>{221a01f7-cbc2-401b-be09-f81b6b8ca66e}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Audio">
-      <UniqueIdentifier>{14d6d5db-d700-47ca-aa3d-dd22a666d699}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="GameObject">
-      <UniqueIdentifier>{ce8e60e4-9465-4768-806f-c6bf59332b44}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Utility">
-      <UniqueIdentifier>{a4dd3906-f592-4bfe-8eee-a1f4a900d60a}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Controllers">
-      <UniqueIdentifier>{e4406c14-c09c-4809-981a-3e6012a1d2c8}</UniqueIdentifier>
-    </Filter>
     <Filter Include="소스 파일">
       <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
       <Extensions>cpp;c;cc;cxx;c++;def;odl;idl;hpj;bat;asm;asmx</Extensions>
     </Filter>
-    <Filter Include="Scenes">
-      <UniqueIdentifier>{cb66db10-e929-4bd3-975f-899bdf934595}</UniqueIdentifier>
+    <Filter Include="Game">
+      <UniqueIdentifier>{3df6f9a4-c003-42ac-a4ef-1a3feab414e8}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Observers">
-      <UniqueIdentifier>{50c6ee9f-b251-4dcf-bbe4-bc8c282de53e}</UniqueIdentifier>
+    <Filter Include="Aat Engine">
+      <UniqueIdentifier>{08bd1b33-867b-409a-af62-77413a822a35}</UniqueIdentifier>
     </Filter>
-    <Filter Include="ResourceManager">
-      <UniqueIdentifier>{86a1d9b6-4967-4a33-b531-209bd96193ec}</UniqueIdentifier>
+    <Filter Include="Aat Engine\GameObject">
+      <UniqueIdentifier>{198d1603-3e36-41e1-b4eb-e6de7b915971}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Aat Engine\WindowSystem">
+      <UniqueIdentifier>{b1d57fc0-5a19-472b-a27f-825f8ff36ec3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Aat Engine\Component">
+      <UniqueIdentifier>{c43f9c51-e070-4827-947f-cc4488478ea3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Aat Engine\Controller">
+      <UniqueIdentifier>{3b0f9a37-3058-4d71-88ea-c83894f3d08d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Aat Engine\Config">
+      <UniqueIdentifier>{e413f88c-83f1-439f-8396-b96e9c153435}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Aat Engine\LuaEngine">
+      <UniqueIdentifier>{67f93e89-53fa-4231-b263-c1e94fa7c974}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Aat Engine\LuaEngine\Scripts">
+      <UniqueIdentifier>{62d9e0d5-4586-4665-aecd-c041e5030ebc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Aat Engine\Logger">
+      <UniqueIdentifier>{f28989f3-6d7d-4e2e-918d-84237f8cdc72}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Aat Engine\Input">
+      <UniqueIdentifier>{0d87ca7e-6a47-46ea-b372-d54ff774f5e8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Aat Engine\GameMode">
+      <UniqueIdentifier>{fa66c8a3-2b62-4e0a-98e6-717ef43fced5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Aat Engine\State">
+      <UniqueIdentifier>{94ded731-d536-484e-8b0c-a48c4d72ba21}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Aat Engine\Engine">
+      <UniqueIdentifier>{abdbcb70-e83a-4de3-aed0-16ba2b00432c}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Window.cpp">
+      <Filter>Aat Engine\WindowSystem</Filter>
+    </ClCompile>
+    <ClCompile Include="ScriptEngine.cpp">
+      <Filter>Aat Engine\LuaEngine</Filter>
+    </ClCompile>
+    <ClCompile Include="GameObjects.cpp">
+      <Filter>Aat Engine\GameObject</Filter>
+    </ClCompile>
+    <ClCompile Include="Input.cpp">
+      <Filter>Aat Engine\Input</Filter>
+    </ClCompile>
+    <ClCompile Include="InputManager.cpp">
+      <Filter>Aat Engine\Input</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp">
+      <Filter>Game</Filter>
+    </ClCompile>
+    <ClCompile Include="GameState.cpp">
+      <Filter>Aat Engine\State</Filter>
+    </ClCompile>
+    <ClCompile Include="Components.cpp">
+      <Filter>Aat Engine\Component</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine.cpp">
+      <Filter>Aat Engine\Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="EngineState.cpp">
+      <Filter>Aat Engine\Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="Functions.cpp">
+      <Filter>Aat Engine\LuaEngine</Filter>
+    </ClCompile>
     <ClCompile Include="pch.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="main.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="Game.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="GameMode.cpp">
-      <Filter>GameMode</Filter>
-    </ClCompile>
-    <ClCompile Include="UI.cpp">
-      <Filter>UI</Filter>
-    </ClCompile>
-    <ClCompile Include="Button.cpp">
-      <Filter>UI</Filter>
-    </ClCompile>
-    <ClCompile Include="Window.cpp">
-      <Filter>UI</Filter>
-    </ClCompile>
-    <ClCompile Include="World.cpp">
-      <Filter>World</Filter>
-    </ClCompile>
-    <ClCompile Include="Components.cpp">
-      <Filter>Components</Filter>
-    </ClCompile>
-    <ClCompile Include="Events.cpp">
-      <Filter>Event</Filter>
-    </ClCompile>
     <ClCompile Include="WindowSetting.cpp">
-      <Filter>Utility</Filter>
-    </ClCompile>
-    <ClCompile Include="Controllers.cpp">
-      <Filter>Controllers</Filter>
-    </ClCompile>
-    <ClCompile Include="ComponentList.cpp">
-      <Filter>Components</Filter>
-    </ClCompile>
-    <ClCompile Include="EventQueue.cpp">
-      <Filter>Event</Filter>
-    </ClCompile>
-    <ClCompile Include="Audio.cpp">
-      <Filter>Audio</Filter>
-    </ClCompile>
-    <ClCompile Include="Functionds.cpp">
-      <Filter>Utility</Filter>
-    </ClCompile>
-    <ClCompile Include="Observer.cpp">
-      <Filter>Observers</Filter>
-    </ClCompile>
-    <ClCompile Include="ResourceManager.cpp">
-      <Filter>ResourceManager</Filter>
+      <Filter>Aat Engine\WindowSystem</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Window.h">
+      <Filter>Aat Engine\WindowSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="ScriptEngine.h">
+      <Filter>Aat Engine\LuaEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="GameObjects.h">
+      <Filter>Aat Engine\GameObject</Filter>
+    </ClInclude>
+    <ClInclude Include="Input.h">
+      <Filter>Aat Engine\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="InputManager.h">
+      <Filter>Aat Engine\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="GameState.h">
+      <Filter>Aat Engine\State</Filter>
+    </ClInclude>
+    <ClInclude Include="Components.h">
+      <Filter>Aat Engine\Component</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine.h">
+      <Filter>Aat Engine\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineState.h">
+      <Filter>Aat Engine\Engine</Filter>
+    </ClInclude>
     <ClInclude Include="pch.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="Game.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="GameMode.h">
-      <Filter>GameMode</Filter>
-    </ClInclude>
-    <ClInclude Include="UI.h">
-      <Filter>UI</Filter>
-    </ClInclude>
-    <ClInclude Include="Button.h">
-      <Filter>UI</Filter>
-    </ClInclude>
-    <ClInclude Include="Window.h">
-      <Filter>UI</Filter>
-    </ClInclude>
-    <ClInclude Include="World.h">
-      <Filter>World</Filter>
-    </ClInclude>
-    <ClInclude Include="Components.h">
-      <Filter>Components</Filter>
-    </ClInclude>
-    <ClInclude Include="Events.h">
-      <Filter>Event</Filter>
-    </ClInclude>
     <ClInclude Include="WindowSetting.h">
-      <Filter>Utility</Filter>
+      <Filter>Aat Engine\WindowSystem</Filter>
     </ClInclude>
-    <ClInclude Include="Controllers.h">
-      <Filter>Controllers</Filter>
-    </ClInclude>
-    <ClInclude Include="ComponentList.h">
-      <Filter>Components</Filter>
-    </ClInclude>
-    <ClInclude Include="EventQueue.h">
-      <Filter>Event</Filter>
-    </ClInclude>
-    <ClInclude Include="Audio.h">
-      <Filter>Audio</Filter>
-    </ClInclude>
-    <ClInclude Include="Observer.h">
-      <Filter>Observers</Filter>
-    </ClInclude>
-    <ClInclude Include="ResourceManager.h">
-      <Filter>ResourceManager</Filter>
-    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="player.lua">
+      <Filter>Aat Engine\LuaEngine\Scripts</Filter>
+    </None>
+    <None Include="GameMode_Lua.lua">
+      <Filter>Aat Engine\LuaEngine\Scripts</Filter>
+    </None>
+    <None Include="Window.lua">
+      <Filter>Aat Engine\LuaEngine\Scripts</Filter>
+    </None>
+    <None Include="test.lua">
+      <Filter>Aat Engine\LuaEngine\Scripts</Filter>
+    </None>
   </ItemGroup>
 </Project>
