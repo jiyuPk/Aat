@@ -38,12 +38,17 @@ void Aat::ScriptEngine::RegisterFunctions()
 	lua_pushcfunction(luaState, Engine::Test);
 	lua_setglobal(luaState, "Test");
 
-	lua_pushcfunction(luaState, Engine::InitWindow);
-	lua_setglobal(luaState, "InitWindow");
-
+	//Window
 	lua_pushcfunction(luaState, Engine::MakeWindow);
 	lua_setglobal(luaState, "MakeWindow");
 
-	lua_pushcfunction(luaState, Engine::SetMaxFrameRate);
-	lua_setglobal(luaState, "SetMaxFrameRate");
+	lua_pushcfunction(luaState, Engine::InitWindow);
+	lua_setglobal(luaState, "InitWindow");
+
+	lua_pushcfunction(luaState, Engine::SetFrameRateLimit);
+	lua_setglobal(luaState, "SetFrameRateLimit");
+	
+	//Font
+	lua_pushcfunction(luaState, Engine::LoadFont);
+	lua_setglobal(luaState, "LoadFont");
 }

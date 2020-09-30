@@ -1,16 +1,10 @@
 #include "pch.h"
 #include "Engine.h"
-#include "InputManager.h"
-#include "ScriptEngine.h"
-#include "Window.h"
 
 Aat::Engine::Engine()
 {
 	engineState = EngineState::Uninitialized;
 	ms_per_update = 5;
-	inputManager = new InputManager;
-	scriptEngine = new ScriptEngine;
-	window = new Window;
 
 	PrintThis();
 }
@@ -36,28 +30,29 @@ void Aat::Engine::Initialize()
 {
 	engineState = EngineState::Initialized;
 
-	InitInputManager();
-	InitScriptEngine();
+	InitializeScriptEngine();
+	InitializeInputManager();
+	InitializeWindow();
+
+	std::cout << "Initilatized: " << gameClock.getElapsedTime().asMilliseconds() << std::endl;
 }
 
 void Aat::Engine::Run()
 {
-	window->MakeWindow();
-
-
-	if (!window->IsOpen())
+	if (!window.IsOpen())
 		std::cerr << "window is not open" << std::endl;
-
 	engineState = EngineState::Run;
-	std::cout << gameClock.getElapsedTime().asMilliseconds() << std::endl;
 
 	sf::Clock deltaTimeClock;
+
 	int previous = deltaTimeClock.getElapsedTime().asMilliseconds();
 	float lag = 0;
+	int current, elapsed = 0;
+
 	while (engineState==EngineState::Run)
 	{
-		int current = deltaTimeClock.getElapsedTime().asMilliseconds();
-		int elapsed = current - previous;
+		current = deltaTimeClock.getElapsedTime().asMilliseconds();
+		elapsed = current - previous;
 		previous = current;
 		lag += elapsed;
 		while (lag >= ms_per_update)
@@ -71,21 +66,8 @@ void Aat::Engine::Run()
 
 void Aat::Engine::PrintThis()
 {
-	std::cout << this << std::endl;
+	std::cout << "Engine pointer: " << this << std::endl;
 }
-
-//int Engine::CreateWindow(lua_State* L)
-//{
-//	lua_getglobal(L, "Engine");
-//	Engine* engine = static_cast<Engine*>(lua_touserdata(L, -1));
-//	bool fullscreen;
-//
-//	if (fullscreen)
-//	{
-//		engine
-//	}
-//	return 0;
-//}
 
 void Aat::Engine::Update()
 {
@@ -96,18 +78,18 @@ void Aat::Engine::Update()
 void Aat::Engine::Render(float lag)
 {
 	//hud.render
-	window->Clear();
-	window->Display();
+	window.Clear();
+	window.Display();
 }
 
 void Aat::Engine::HandleEvent()
 {
 	sf::Event sfEvent;
-	while (window->PollEvent(sfEvent))
+	while (window.PollEvent(sfEvent))
 	{
 		if (sfEvent.type == sf::Event::Closed)
 		{
-			window->Close();
+			window.Close();
 		}
 	}
 }
@@ -117,25 +99,31 @@ void Aat::Engine::InitConfig()
 	//config.load()
 }
 
-void Aat::Engine::InitWindow()
+void Aat::Engine::InitializeWindow()
 {
-	window->Initialize("");
+	//window.Initialize();
+	scriptEngine.LoadLuaFile("window.lua");
+	lua_getglobal(scriptEngine.GetLuaState(), "initializewindow");
+	lua_pcall(scriptEngine.GetLuaState(), 0, 0, 0);
+
+	//window.MakeWindow();
 }
 
-void Aat::Engine::InitScriptEngine()
+void Aat::Engine::InitializeScriptEngine()
 {
-	scriptEngine->Initialize();
+	scriptEngine.Initialize();
 
-	lua_pushlightuserdata(scriptEngine->GetLuaState(), this);
-	lua_setglobal(scriptEngine->GetLuaState(), "ENGINE");
+	lua_pushlightuserdata(scriptEngine.GetLuaState(), this);
+	lua_setglobal(scriptEngine.GetLuaState(), "ENGINE");
 	//scriptEngine.pushlightuserdata(this) any로 인수 받음
 
-	scriptEngine->LoadLuaFile("test.lua");
-	lua_getglobal(scriptEngine->GetLuaState(), "test");
-	lua_pcall(scriptEngine->GetLuaState(), 0, 0, 0);
+	//test
+	//scriptEngine.LoadLuaFile("test.lua");
+	//lua_getglobal(scriptEngine.GetLuaState(), "test");
+	//lua_pcall(scriptEngine.GetLuaState(), 0, 0, 0);
 }
 
-void Aat::Engine::InitInputManager()
+void Aat::Engine::InitializeInputManager()
 {
-	inputManager->Initialize("Config/KeyMap.ini");
+	inputManager.Initialize("Config/KeyMap.ini");
 }

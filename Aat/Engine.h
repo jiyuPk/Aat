@@ -1,10 +1,10 @@
 #pragma once
-//나중에 전방선언 빼고 포인터말고 객체로
+#include "InputManager.h"
+#include "ResourceManager.h"
+#include "ScriptEngine.h"
+#include "Window.h"
 namespace Aat
 {
-	class Window;
-	class InputManager;
-	class ScriptEngine;
 
 	enum class EngineState
 	{
@@ -22,21 +22,18 @@ namespace Aat
 
 		//void InitGameMode(const char* game_mode_file);
 
-		////Lua Functions
-		//int CreateWindow(lua_State* L);
-
 		void Initialize();
 		void Run();
 
 		//개발용
 		void PrintThis();
 	private:
-		Aat::Window* window;
+		Aat::Window window;
 		int ms_per_update;
 		EngineState engineState;
 		//Managers
-		InputManager* inputManager;
-		ScriptEngine* scriptEngine;
+		InputManager inputManager;
+		ScriptEngine scriptEngine;
 
 		sf::Clock gameClock;
 		//Methods
@@ -47,10 +44,10 @@ namespace Aat
 		//Initializers
 		void InitConfig();
 		void InitLogger();
-		void InitResource();
-		void InitWindow();
-		void InitScriptEngine();
-		void InitInputManager();
+		void initializeResource();
+		void InitializeWindow();
+		void InitializeScriptEngine();
+		void InitializeInputManager();
 
 	public:
 		//test
@@ -58,6 +55,8 @@ namespace Aat
 		//Window
 		static int InitWindow(lua_State* lua_state);
 		static int MakeWindow(lua_State* lua_state);
-		static int SetMaxFrameRate(lua_State* lua_state);
+		static int SetFrameRateLimit(lua_State* lua_state);
+		//Font
+		static int LoadFont(lua_State* lua_state);
 	};
 }

@@ -1,21 +1,65 @@
 #include "pch.h"
 #include "Window.h"
-#include "WindowSetting.h"
 
 Aat::Window::Window()
-	:setting(new WindowSetting)
 {
+	isInitialized = false;
+
+	videoMode.height = 0;
+	videoMode.width = 0;
+	fullScreen = false;
+	title = "";
+	contextSetting.antialiasingLevel = 0;
+	frameRateLimit = 0;
 }
 
 void Aat::Window::Initialize(std::filesystem::path path)
 {
-	setting->LoadFromFile(path);
+	//not realized maybe will delete
+}
+
+void Aat::Window::Initialize(sf::VideoMode video_mode, std::string title, size_t framerate_limit, bool fullscreen)
+{
+	videoMode = video_mode;
+	this->title = title;
+	fullScreen = fullscreen;
+	contextSetting.antialiasingLevel = 0;
+	frameRateLimit = framerate_limit;
+
+	std::cout << "window initialize with lua" << std::endl;
+	isInitialized = true;
+}
+
+void Aat::Window::Initialize()
+{
+	videoMode.height = 720;
+	videoMode.width = 1280;
+	fullScreen = false;
+	title = "Aat";
+	contextSetting.antialiasingLevel = 0;
+	frameRateLimit = 240;
+
+	std::cout << "Basic initialize" << std::endl;
+	isInitialized = true;
 }
 
 void Aat::Window::MakeWindow()
 {
-	window.create(setting->videoMode, setting->title, sf::Style::Default, setting->contextSetting);
-	window.setFramerateLimit(setting->frameRateLimit);
+	if (fullScreen)
+	{
+		std::cout << "window fullscreen" << std::endl;
+	}
+	else
+	{
+		window.create(videoMode, title, sf::Style::Default, contextSetting);
+		window.setFramerateLimit(frameRateLimit);
+	}
+}
+
+void Aat::Window::SetFramerateLimit(size_t limit)
+{
+	frameRateLimit = limit;
+	window.setFramerateLimit(limit);
 }
 
 void Aat::Window::Display()

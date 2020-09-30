@@ -14,13 +14,15 @@
 #endif*/
 int main()
 {
-	try
-	{
-		Aat::Engine engine;
-		engine.Initialize();
-		engine.Run();
-	}
-	catch (const std::string& string)
-	{
-	}
+	//try
+	//{
+	//	Aat::Engine engine;
+	//	engine.Initialize();
+	//	engine.Run();
+	//}
+	//catch (const std::string& string)
+	//{
+	//	std::cerr << string << std::endl;
+	//}
+	Aat::Fonts font;
 }
