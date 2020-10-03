@@ -98,6 +98,9 @@
     <ClCompile Include="Fonts.cpp">
       <Filter>Aat Engine\Resource</Filter>
     </ClCompile>
+    <ClCompile Include="IGameMode.cpp">
+      <Filter>Aat Engine\GameMode</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Window.h">
@@ -136,12 +139,12 @@
     <ClInclude Include="Fonts.h">
       <Filter>Aat Engine\Resource</Filter>
     </ClInclude>
+    <ClInclude Include="IGameMode.h">
+      <Filter>Aat Engine\GameMode</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="player.lua">
-      <Filter>Aat Engine\LuaEngine\Scripts</Filter>
-    </None>
-    <None Include="GameMode_Lua.lua">
       <Filter>Aat Engine\LuaEngine\Scripts</Filter>
     </None>
     <None Include="test.lua">
@@ -151,6 +154,9 @@
       <Filter>Aat Engine\LuaEngine\Scripts</Filter>
     </None>
     <None Include="font.lua">
+      <Filter>Aat Engine\LuaEngine\Scripts</Filter>
+    </None>
+    <None Include="gamemode.lua">
       <Filter>Aat Engine\LuaEngine\Scripts</Filter>
     </None>
   </ItemGroup>

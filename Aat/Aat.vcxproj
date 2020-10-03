@@ -171,6 +171,7 @@
     <ClCompile Include="EngineState.cpp" />
     <ClCompile Include="Fonts.cpp" />
     <ClCompile Include="Functions.cpp" />
+    <ClCompile Include="IGameMode.cpp" />
     <ClCompile Include="GameObjects.cpp" />
     <ClCompile Include="GameState.cpp" />
     <ClCompile Include="Input.cpp" />
@@ -191,6 +192,7 @@
     <ClInclude Include="Engine.h" />
     <ClInclude Include="EngineState.h" />
     <ClInclude Include="Fonts.h" />
+    <ClInclude Include="IGameMode.h" />
     <ClInclude Include="GameObjects.h" />
     <ClInclude Include="GameState.h" />
     <ClInclude Include="Input.h" />
@@ -202,7 +204,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="font.lua" />
-    <None Include="GameMode_Lua.lua" />
+    <None Include="gamemode.lua" />
     <None Include="player.lua" />
     <None Include="test.lua" />
     <None Include="window.lua" />

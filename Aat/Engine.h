@@ -2,7 +2,9 @@
 #include "InputManager.h"
 #include "ResourceManager.h"
 #include "ScriptEngine.h"
-#include "Window.h"
+#include "Fonts.h"
+#include "IGameMode.h"
+
 namespace Aat
 {
 
@@ -28,12 +30,15 @@ namespace Aat
 		//°³¹ß¿ë
 		void PrintThis();
 	private:
-		Aat::Window window;
-		int ms_per_update;
+		Window window;
+		IGameMode* gameMode;
+		Fonts fonts;
 		EngineState engineState;
+		int ms_per_update;
 		//Managers
 		InputManager inputManager;
 		ScriptEngine scriptEngine;
+		ResourceManager resourceManager;
 
 		sf::Clock gameClock;
 		//Methods
@@ -43,8 +48,10 @@ namespace Aat
 		void HandleEvent();
 		//Initializers
 		void InitConfig();
+		void InitGameMode();
 		void InitLogger();
-		void initializeResource();
+		void InitializeResource();
+		void InitializeFont();
 		void InitializeWindow();
 		void InitializeScriptEngine();
 		void InitializeInputManager();
@@ -57,6 +64,7 @@ namespace Aat
 		static int MakeWindow(lua_State* lua_state);
 		static int SetFrameRateLimit(lua_State* lua_state);
 		//Font
-		static int LoadFont(lua_State* lua_state);
+		static int LoadFontFromFile(lua_State* lua_state);
+		//Gamemode
 	};
 }

@@ -49,6 +49,6 @@ void Aat::ScriptEngine::RegisterFunctions()
 	lua_setglobal(luaState, "SetFrameRateLimit");
 	
 	//Font
-	lua_pushcfunction(luaState, Engine::LoadFont);
-	lua_setglobal(luaState, "LoadFont");
+	lua_pushcfunction(luaState, Engine::LoadFontFromFile);
+	lua_setglobal(luaState, "LoadFontFromFile");
 }

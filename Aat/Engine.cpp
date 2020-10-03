@@ -5,34 +5,20 @@ Aat::Engine::Engine()
 {
 	engineState = EngineState::Uninitialized;
 	ms_per_update = 5;
-
-	PrintThis();
 }
 
 Aat::Engine::~Engine()
 {
 }
 
-//void Engine::InitGameMode(const char* game_mode_file)
-//{
-//	if (gameMode != nullptr)
-//	{
-//		delete gameMode;
-//	}
-//	gameMode = new Aat::GameMode(game_mode_file);
-//
-//	lua_pushlightuserdata(gameMode->GetLuaState(), this);
-//	lua_setglobal(gameMode->GetLuaState(), "Engine");
-//	//registerCppFunction(gameMode->(GetLuaState))
-//}
-
 void Aat::Engine::Initialize()
 {
 	engineState = EngineState::Initialized;
-
 	InitializeScriptEngine();
 	InitializeInputManager();
 	InitializeWindow();
+	InitializeFont();
+	InitGameMode();
 
 	std::cout << "Initilatized: " << gameClock.getElapsedTime().asMilliseconds() << std::endl;
 }
@@ -40,7 +26,8 @@ void Aat::Engine::Initialize()
 void Aat::Engine::Run()
 {
 	if (!window.IsOpen())
-		std::cerr << "window is not open" << std::endl;
+		throw std::exception("window is not open");
+
 	engineState = EngineState::Run;
 
 	sf::Clock deltaTimeClock;
@@ -71,14 +58,14 @@ void Aat::Engine::PrintThis()
 
 void Aat::Engine::Update()
 {
-	//std::cout << "UPDATE" << std::endl;
+
 	HandleEvent();
 }
 
 void Aat::Engine::Render(float lag)
 {
-	//hud.render
 	window.Clear();
+
 	window.Display();
 }
 
@@ -99,14 +86,38 @@ void Aat::Engine::InitConfig()
 	//config.load()
 }
 
+//void Aat::Engine::initializeResource()
+//{
+//	scriptEngine.LoadLuaFile("resource.lua");
+//	lua_getglobal(scriptEngine.GetLuaState(), "initializefont");
+//	lua_pcall(scriptEngine.GetLuaState(), 0, 0, 0);
+//}
+
+void Aat::Engine::InitializeFont()
+{
+	scriptEngine.LoadLuaFile("font.lua");
+	lua_getglobal(scriptEngine.GetLuaState(), "initializefont");
+	lua_pcall(scriptEngine.GetLuaState(), 0, 0, 0);
+
+	fonts[0];
+}
+
 void Aat::Engine::InitializeWindow()
 {
-	//window.Initialize();
 	scriptEngine.LoadLuaFile("window.lua");
 	lua_getglobal(scriptEngine.GetLuaState(), "initializewindow");
 	lua_pcall(scriptEngine.GetLuaState(), 0, 0, 0);
 
+	//C++
+	//window.Initialize();
 	//window.MakeWindow();
+}
+
+void Aat::Engine::InitGameMode()
+{
+	scriptEngine.LoadLuaFile("gamemode.lua");
+	lua_getglobal(scriptEngine.GetLuaState(), "Initializegamemode");
+	lua_pcall(scriptEngine.GetLuaState(), 0, 0, 0);
 }
 
 void Aat::Engine::InitializeScriptEngine()
@@ -115,15 +126,16 @@ void Aat::Engine::InitializeScriptEngine()
 
 	lua_pushlightuserdata(scriptEngine.GetLuaState(), this);
 	lua_setglobal(scriptEngine.GetLuaState(), "ENGINE");
+
 	//scriptEngine.pushlightuserdata(this) any로 인수 받음
 
 	//test
-	//scriptEngine.LoadLuaFile("test.lua");
-	//lua_getglobal(scriptEngine.GetLuaState(), "test");
-	//lua_pcall(scriptEngine.GetLuaState(), 0, 0, 0);
+	/*scriptEngine.LoadLuaFile("test.lua");
+	lua_getglobal(scriptEngine.GetLuaState(), "test2");
+	lua_pcall(scriptEngine.GetLuaState(), 0, 0, 0);*/
 }
 
 void Aat::Engine::InitializeInputManager()
 {
-	inputManager.Initialize("Config/KeyMap.ini");
+	//inputManager.Initialize("Config/KeyMap.ini");
 }

@@ -1,5 +1,4 @@
 #pragma once
-#include "Fonts.h"
 namespace Aat
 {
 	class ResourceManager
@@ -7,9 +6,8 @@ namespace Aat
 	public:
 		ResourceManager();
 
-		void LoadFont();
+		std::vector<sf::Texture> textures;
 	private:
-		std::vector<sf::Font> font;
 	};
 }
 

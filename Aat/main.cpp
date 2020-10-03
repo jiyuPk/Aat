@@ -12,17 +12,22 @@
 #define new new ( _NORMAL_BLOCK , __FILE__ , __LINE__ )
 
 #endif*/
+
 int main()
 {
-	//try
-	//{
-	//	Aat::Engine engine;
-	//	engine.Initialize();
-	//	engine.Run();
-	//}
-	//catch (const std::string& string)
-	//{
-	//	std::cerr << string << std::endl;
-	//}
-	Aat::Fonts font;
+	//HWND hWndConsole = GetConsoleWindow();
+	//ShowWindow(hWndConsole, SW_HIDE);
+
+	try
+	{
+		Aat::Engine engine;
+		engine.Initialize();
+		engine.Run();
+	}
+	catch (std::exception e)
+	{
+		std::cerr << e.what() << std::endl;
+		return 1;
+	}
+	return 0;
 }

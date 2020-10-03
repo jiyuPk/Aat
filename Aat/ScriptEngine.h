@@ -18,6 +18,7 @@ namespace Aat
 		lua_State* luaState;
 
 		//Methode
+		void CheckLuaFiles();
 		void RegisterFunctions();
 	};
 }

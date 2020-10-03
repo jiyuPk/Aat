@@ -18,18 +18,6 @@ void Aat::Window::Initialize(std::filesystem::path path)
 	//not realized maybe will delete
 }
 
-void Aat::Window::Initialize(sf::VideoMode video_mode, std::string title, size_t framerate_limit, bool fullscreen)
-{
-	videoMode = video_mode;
-	this->title = title;
-	fullScreen = fullscreen;
-	contextSetting.antialiasingLevel = 0;
-	frameRateLimit = framerate_limit;
-
-	std::cout << "window initialize with lua" << std::endl;
-	isInitialized = true;
-}
-
 void Aat::Window::Initialize()
 {
 	videoMode.height = 720;
@@ -40,6 +28,17 @@ void Aat::Window::Initialize()
 	frameRateLimit = 240;
 
 	std::cout << "Basic initialize" << std::endl;
+	isInitialized = true;
+}
+
+void Aat::Window::Initialize(sf::VideoMode video_mode, std::string title, size_t framerate_limit, bool fullscreen)
+{
+	videoMode = video_mode;
+	this->title = title;
+	fullScreen = fullscreen;
+	contextSetting.antialiasingLevel = 0;
+	frameRateLimit = framerate_limit;
+
 	isInitialized = true;
 }
 

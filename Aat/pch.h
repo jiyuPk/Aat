@@ -9,6 +9,8 @@
 #include <iostream>
 #include <filesystem>
 #include <variant>
+#include <algorithm>
+#include <windows.h>
 
 //SFML
 #include <SFML/System.hpp>
