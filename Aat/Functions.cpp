@@ -1,6 +1,5 @@
 #include "pch.h"
 #include "Engine.h"
-
 int Aat::Engine::Test(lua_State* lua_state)
 {
     lua_getglobal(lua_state, "ENGINE");
@@ -56,5 +55,16 @@ int Aat::Engine::LoadFontFromFile(lua_State* lua_state)
 
     engine->fonts.LoadFromFile(path);
 
+    return 0;
+}
+
+int Aat::Engine::InitGameMode(lua_State* lua_state)
+{
+    lua_getglobal(lua_state, "ENGINE");
+    Engine* engine = static_cast<Engine*>(lua_touserdata(lua_state, -1));
+
+    size_t gamemodeID = lua_tointeger(lua_state, 1);
+
+    engine->gameMode.Initialize(gamemodeID, &engine->window, engine->fonts[0]);
     return 0;
 }

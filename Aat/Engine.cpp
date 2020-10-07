@@ -58,14 +58,14 @@ void Aat::Engine::PrintThis()
 
 void Aat::Engine::Update()
 {
-
+	gameMode.Update();
 	HandleEvent();
 }
 
 void Aat::Engine::Render(float lag)
 {
 	window.Clear();
-
+	gameMode.Render();
 	window.Display();
 }
 
@@ -77,6 +77,7 @@ void Aat::Engine::HandleEvent()
 		if (sfEvent.type == sf::Event::Closed)
 		{
 			window.Close();
+			engineState = EngineState::Stop;
 		}
 	}
 }
@@ -116,7 +117,7 @@ void Aat::Engine::InitializeWindow()
 void Aat::Engine::InitGameMode()
 {
 	scriptEngine.LoadLuaFile("gamemode.lua");
-	lua_getglobal(scriptEngine.GetLuaState(), "Initializegamemode");
+	lua_getglobal(scriptEngine.GetLuaState(), "initializegamemode");
 	lua_pcall(scriptEngine.GetLuaState(), 0, 0, 0);
 }
 

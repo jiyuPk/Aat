@@ -1,6 +1,5 @@
 #pragma once
-
-namespace Aat
+namespace Aat::Window
 {
 	class Window
 	{
@@ -22,7 +21,9 @@ namespace Aat
 		bool PollEvent(sf::Event& event);
 		bool IsOpen();
 
-		void Draw(sf::Drawable* objekt);
+		void Draw(const sf::Drawable& objekt);
+
+		inline sf::RenderWindow& GetWindow() { return window; };
 	private:
 		sf::RenderWindow window;
 		bool isInitialized;
@@ -35,3 +36,4 @@ namespace Aat
 		size_t frameRateLimit;
 	};
 }
+

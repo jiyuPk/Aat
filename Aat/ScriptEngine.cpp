@@ -51,4 +51,9 @@ void Aat::ScriptEngine::RegisterFunctions()
 	//Font
 	lua_pushcfunction(luaState, Engine::LoadFontFromFile);
 	lua_setglobal(luaState, "LoadFontFromFile");
+
+	//GameMode
+	lua_pushcfunction(luaState, Engine::InitGameMode);
+	lua_setglobal(luaState, "InitGameMode");
+
 }

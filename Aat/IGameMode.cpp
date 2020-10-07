@@ -1,11 +1,32 @@
 #include "pch.h"
 #include "IGameMode.h"
 
-void Aat::IGameMode::Update()
+Aat::GameMode::IGameMode::IGameMode()
 {
+	gameMode = nullptr;
+	window = nullptr;
 }
 
-void Aat::IGameMode::Render(Window& window)
+void Aat::GameMode::IGameMode::Initialize(size_t gamemode_id, Window::Window* window, sf::Font& font)
 {
-	//window.
+	this->window = window;
+	if (gamemode_id == 1)
+	{
+		gameMode = new MainMemuGameMode(font);
+	}
+}
+
+void Aat::GameMode::IGameMode::Update()
+{
+	gameMode->Update(mousePositionWindow);
+}
+
+void Aat::GameMode::IGameMode::Render()
+{
+	gameMode->Render(*window);
+}
+
+void Aat::GameMode::IGameMode::UpdateMousePosition(Window::Window* window)
+{
+	mousePositionWindow = sf::Mouse::getPosition(window->GetWindow());
 }

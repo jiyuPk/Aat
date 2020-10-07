@@ -54,6 +54,9 @@
     <Filter Include="Aat Engine\Resource">
       <UniqueIdentifier>{f6b68dce-75cc-4187-b6c6-a2a54f1effdb}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Aat Engine\GUI">
+      <UniqueIdentifier>{ee34d838-9fbb-4490-8a30-b9bd47289b34}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Window.cpp">
@@ -86,9 +89,6 @@
     <ClCompile Include="EngineState.cpp">
       <Filter>Aat Engine\Engine</Filter>
     </ClCompile>
-    <ClCompile Include="pch.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
     <ClCompile Include="Functions.cpp">
       <Filter>Aat Engine\Engine</Filter>
     </ClCompile>
@@ -100,6 +100,30 @@
     </ClCompile>
     <ClCompile Include="IGameMode.cpp">
       <Filter>Aat Engine\GameMode</Filter>
+    </ClCompile>
+    <ClCompile Include="GameMode.cpp">
+      <Filter>Aat Engine\GameMode</Filter>
+    </ClCompile>
+    <ClCompile Include="MainMenuGameMode.cpp">
+      <Filter>Aat Engine\GameMode</Filter>
+    </ClCompile>
+    <ClCompile Include="pch.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Window.ixx">
+      <Filter>Aat Engine\WindowSystem</Filter>
+    </ClCompile>
+    <ClCompile Include="GUI.cpp">
+      <Filter>Aat Engine\GUI</Filter>
+    </ClCompile>
+    <ClCompile Include="IGUIElement.cpp">
+      <Filter>Aat Engine\GUI</Filter>
+    </ClCompile>
+    <ClCompile Include="Button.cpp">
+      <Filter>Aat Engine\GUI</Filter>
+    </ClCompile>
+    <ClCompile Include="Text.cpp">
+      <Filter>Aat Engine\GUI</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -130,9 +154,6 @@
     <ClInclude Include="EngineState.h">
       <Filter>Aat Engine\Engine</Filter>
     </ClInclude>
-    <ClInclude Include="pch.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
     <ClInclude Include="ResourceManager.h">
       <Filter>Aat Engine\Resource</Filter>
     </ClInclude>
@@ -141,6 +162,27 @@
     </ClInclude>
     <ClInclude Include="IGameMode.h">
       <Filter>Aat Engine\GameMode</Filter>
+    </ClInclude>
+    <ClInclude Include="GameMode.h">
+      <Filter>Aat Engine\GameMode</Filter>
+    </ClInclude>
+    <ClInclude Include="MainMenuGameMode.h">
+      <Filter>Aat Engine\GameMode</Filter>
+    </ClInclude>
+    <ClInclude Include="pch.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="GUI.h">
+      <Filter>Aat Engine\GUI</Filter>
+    </ClInclude>
+    <ClInclude Include="IGUIElement.h">
+      <Filter>Aat Engine\GUI</Filter>
+    </ClInclude>
+    <ClInclude Include="Button.h">
+      <Filter>Aat Engine\GUI</Filter>
+    </ClInclude>
+    <ClInclude Include="Text.h">
+      <Filter>Aat Engine\GUI</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

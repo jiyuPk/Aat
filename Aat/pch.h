@@ -10,7 +10,7 @@
 #include <filesystem>
 #include <variant>
 #include <algorithm>
-#include <windows.h>
+//#include <windows.h>
 
 //SFML
 #include <SFML/System.hpp>
@@ -22,4 +22,5 @@
 //LUA
 #include "lua.hpp"
 #include "luajit.h"
+
 #endif PCH_H

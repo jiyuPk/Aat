@@ -1,6 +1,5 @@
 #include "pch.h"
 #include "Input.h"
-
 //bool Aat::Input::IsPressed()
 //{
 //	//variant에서 타입비교 찾기

@@ -1,6 +1,5 @@
 #include "pch.h"
 #include "InputManager.h"
-
 Aat::InputManager::InputManager()
 {
 	isInitialized = false;

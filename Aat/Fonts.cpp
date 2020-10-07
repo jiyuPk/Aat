@@ -1,6 +1,5 @@
 #include "pch.h"
 #include "Fonts.h"
-
 Aat::Fonts::Fonts()
 {
 }
@@ -15,7 +14,7 @@ void Aat::Fonts::LoadFromFile(std::filesystem::path path)
 	fonts.push_back(font);
 }
 
-const sf::Font& Aat::Fonts::operator[](size_t index) const
+sf::Font& Aat::Fonts::operator[](size_t index)
 {
 	if (index >= fonts.size())
 	{

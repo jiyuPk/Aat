@@ -1,6 +1,5 @@
 #pragma once
 #include "InputManager.h"
-#include "ResourceManager.h"
 #include "ScriptEngine.h"
 #include "Fonts.h"
 #include "IGameMode.h"
@@ -30,17 +29,17 @@ namespace Aat
 		//°³¹ß¿ë
 		void PrintThis();
 	private:
-		Window window;
-		IGameMode* gameMode;
+		Window::Window window;
+		GameMode::IGameMode gameMode;
 		Fonts fonts;
 		EngineState engineState;
 		int ms_per_update;
 		//Managers
 		InputManager inputManager;
 		ScriptEngine scriptEngine;
-		ResourceManager resourceManager;
 
 		sf::Clock gameClock;
+
 		//Methods
 		void Update();
 		void Render(float lag);
@@ -66,5 +65,6 @@ namespace Aat
 		//Font
 		static int LoadFontFromFile(lua_State* lua_state);
 		//Gamemode
+		static int InitGameMode(lua_State* lua_state);
 	};
 }

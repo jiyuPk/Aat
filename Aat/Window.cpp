@@ -1,7 +1,7 @@
 #include "pch.h"
 #include "Window.h"
 
-Aat::Window::Window()
+Aat::Window::Window::Window()
 {
 	isInitialized = false;
 
@@ -13,12 +13,12 @@ Aat::Window::Window()
 	frameRateLimit = 0;
 }
 
-void Aat::Window::Initialize(std::filesystem::path path)
+void Aat::Window::Window::Initialize(std::filesystem::path path)
 {
 	//not realized maybe will delete
 }
 
-void Aat::Window::Initialize()
+void Aat::Window::Window::Initialize()
 {
 	videoMode.height = 720;
 	videoMode.width = 1280;
@@ -31,7 +31,7 @@ void Aat::Window::Initialize()
 	isInitialized = true;
 }
 
-void Aat::Window::Initialize(sf::VideoMode video_mode, std::string title, size_t framerate_limit, bool fullscreen)
+void Aat::Window::Window::Initialize(sf::VideoMode video_mode, std::string title, size_t framerate_limit, bool fullscreen)
 {
 	videoMode = video_mode;
 	this->title = title;
@@ -42,7 +42,7 @@ void Aat::Window::Initialize(sf::VideoMode video_mode, std::string title, size_t
 	isInitialized = true;
 }
 
-void Aat::Window::MakeWindow()
+void Aat::Window::Window::MakeWindow()
 {
 	if (fullScreen)
 	{
@@ -50,43 +50,56 @@ void Aat::Window::MakeWindow()
 	}
 	else
 	{
-		window.create(videoMode, title, sf::Style::Default, contextSetting);
+		window.create(videoMode, title, sf::Style::Close | sf::Style::Titlebar, contextSetting);
 		window.setFramerateLimit(frameRateLimit);
 	}
 }
 
-void Aat::Window::SetFramerateLimit(size_t limit)
+void Aat::Window::Window::SetFramerateLimit(size_t limit)
 {
 	frameRateLimit = limit;
 	window.setFramerateLimit(limit);
 }
 
-void Aat::Window::Display()
+void Aat::Window::Window::Display()
 {
 	window.display();
 }
 
-void Aat::Window::Clear()
+void Aat::Window::Window::Clear()
 {
 	window.clear();
 }
 
-void Aat::Window::Close()
+void Aat::Window::Window::Close()
 {
 	window.close();
 }
 
-bool Aat::Window::PollEvent(sf::Event& event)
+bool Aat::Window::Window::PollEvent(sf::Event& event)
 {
 	return window.pollEvent(event);
 }
 
-bool Aat::Window::IsOpen()
+bool Aat::Window::Window::IsOpen()
 {
 	return window.isOpen();
 }
 
-void Aat::Window::Draw(sf::Drawable* objekt)
+void Aat::Window::Window::Draw(const sf::Drawable& objekt)
 {
-	window.draw(*objekt);
+	window.draw(objekt);
 }
+
+
+//module
+//import Window;
+//Aat::Window::Window()
+//{
+//	style = 5;
+//}
+//void Aat::Window::Func()
+//{
+//	std::cout << "func" << std::endl;
+//	std::cout << style << std::endl;
+//}

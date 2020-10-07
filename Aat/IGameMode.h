@@ -1,16 +1,24 @@
 #pragma once
-#include "Window.h"
+#include "MainMenuGameMode.h"
 
-namespace Aat
+namespace Aat::GameMode
 {
 	class IGameMode
 	{
 	public:
-		void Update();
-		void Render(Window& window);
-	private:
-	};
+		IGameMode();
 
+		void Initialize(size_t gamemode_id, Window::Window* window, sf::Font& font);
+
+		void Update();
+		void Render();
+	private:
+		GameMode* gameMode;
+		Window::Window* window;
+		sf::Vector2i mousePositionWindow;
+		//Methods
+		void UpdateMousePosition(Window::Window* window);
+	};
 }
 
 

@@ -8,7 +8,7 @@ namespace Aat
 
 		void LoadFromFile(std::filesystem::path path);
 
-		const sf::Font& operator[] (size_t index) const;
+		sf::Font& operator[] (size_t index);
 	private:
 		std::vector<sf::Font> fonts;
 	};
